@@ -3,88 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naam Checken</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input[type="text"] {
-            padding: 8px;
-            margin: 10px 0;
-            font-size: 16px;
-        }
-        button {
-            padding: 8px 16px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        #resultaat {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-        #laatstIngevoerde {
-            margin-top: 20px;
-            font-size: 16px;
-        }
-    </style>
+    <title>Lingo</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link naar de CSS -->
 </head>
 <body>
-    <h1>Check je Naam!</h1>
-    <label for="naamInput">Voer een naam in:</label>
-    <input type="text" id="naamInput" />
-    <button onclick="checkNaam()">Check Naam</button>
-
-    <div id="resultaat"></div>
-
-    <div id="laatstIngevoerde">
-        <!-- De laatste 5 ingevoerde woorden worden hier getoond -->
+    <div class="container">
+        <h1>Lingo</h1>
+        <p>Hoe heet Ole zijn broertje? Vul in een naam in:</p>
+        <input type="text" id="naamInput" placeholder="Voer een naam in">
+        <button onclick="checkNaam()">Verstuur</button>
+        <p id="resultaat"></p>
     </div>
 
-    <script>
-        function checkNaam() {
-            const correctNaam = "Loek";
-            const naamInput = document.getElementById("naamInput").value;
-            const resultaatElement = document.getElementById("resultaat");
-
-            // Haal de lijst van de laatste 5 ingevoerde woorden op uit localStorage, of maak een lege lijst als die er nog niet is
-            let laatstIngevoerdeWoorden = JSON.parse(localStorage.getItem('laatstIngevoerdeWoorden')) || [];
-
-            // Voeg de nieuwe ingevoerde naam toe aan de lijst
-            laatstIngevoerdeWoorden.push(naamInput);
-
-            // Zorg ervoor dat de lijst niet groter wordt dan 5
-            if (laatstIngevoerdeWoorden.length > 5) {
-                laatstIngevoerdeWoorden.shift(); // Verwijder het oudste woord als er meer dan 5 zijn
-            }
-
-            // Sla de bijgewerkte lijst op in localStorage
-            localStorage.setItem('laatstIngevoerdeWoorden', JSON.stringify(laatstIngevoerdeWoorden));
-
-            // Laat de laatste 5 ingevoerde woorden zien
-            const laatstIngevoerdeElement = document.getElementById("laatstIngevoerde");
-            laatstIngevoerdeElement.innerHTML = "<strong>Laatste 5 ingevoerde woorden:</strong><br>" + laatstIngevoerdeWoorden.join("<br>");
-
-            // Als de naam correct is
-            if (naamInput.toLowerCase() === correctNaam.toLowerCase()) {
-                resultaatElement.innerHTML = "<span style='color: green;'>Welkom Loek!!!</span>";
-            } else {
-                let resultaat = "";
-                for (let i = 0; i < naamInput.length; i++) {
-                    const letter = naamInput[i];
-                    const correctLetter = correctNaam[i];
-
-                    if (letter === correctLetter) {
-                        resultaat += `<span style='color: green;'>${letter}</span>`; // Correcte letter, groen
-                    } else if (correctNaam.includes(letter)) {
-                        resultaat += `<span style='color: orange;'>${letter}</span>`; // Letter komt voor, maar niet op de juiste plek, oranje
-                    } else {
-                        resultaat += `<span style='color: red;'>${letter}</span>`; // Fout, rood
-                    }
-                }
-                resultaatElement.innerHTML = resultaat;
-            }
-        }
-    </script>
+    <script src="script.js"></script> <!-- Link naar de JavaScript -->
 </body>
 </html>
