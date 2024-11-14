@@ -5,9 +5,9 @@ function checkNaam() {
     const naamInput = document.getElementById("naamInput").value.trim().toLowerCase(); // Zet naar kleine letters
     const resultaatElement = document.getElementById("resultaat");
 
-    // Controleer of de ingevoerde naam precies 4 letters heeft
+    // Controleer of de ingevoerde naam exact 4 letters heeft
     if (naamInput.length !== 4) {
-        resultaatElement.innerHTML = "<span style='color: red;'>Voer exact 4 letters in.</span>";
+        resultaatElement.innerHTML = "<span style='color: red;'>Voer een naam in van precies 4 letters.</span>";
         return; // Stop de functie als de invoer niet precies 4 letters is
     }
 
