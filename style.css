@@ -7,7 +7,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden; /* Zorg ervoor dat er geen scrollbalk verschijnt */
 }
 
 .container {
@@ -18,7 +17,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    position: relative; /* Zorg ervoor dat de container goed wordt gepositioneerd */
 }
 
 h1 {
@@ -74,53 +72,28 @@ button:hover {
 /* Vuurwerk Animatie */
 .vuurwerk {
     display: none;
-    position: absolute;
-    top: 50%;
+    position: fixed;
+    top: 20%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 4em;
+    transform: translateX(-50%);
+    font-size: 2em;
     color: #FFD700;
     text-align: center;
-    animation: vuurwerkAnimatie 1.5s ease-out infinite, beweegVuurwerk 1s ease-out infinite;
+    animation: vuurwerkAnimatie 1s ease-in-out infinite;
     opacity: 0;
-    z-index: 1000; /* Zorgt ervoor dat het vuurwerk boven andere elementen komt */
 }
 
 @keyframes vuurwerkAnimatie {
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0);
+        transform: translateX(-50%) scale(0);
     }
     50% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1.5);
+        transform: translateX(-50%) scale(1.2);
     }
     100% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0);
-    }
-}
-
-/* Beweeg de vuurwerkdiv over het scherm */
-@keyframes beweegVuurwerk {
-    0% {
-        top: 50%;
-        left: 50%;
-    }
-    25% {
-        top: 20%;
-        left: 30%;
-    }
-    50% {
-        top: 10%;
-        left: 70%;
-    }
-    75% {
-        top: 80%;
-        left: 90%;
-    }
-    100% {
-        top: 50%;
-        left: 50%;
+        transform: translateX(-50%) scale(0);
     }
 }
