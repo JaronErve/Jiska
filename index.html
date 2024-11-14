@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lingo</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link naar de CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Lingo</h1>
-        <p>Hoe heet Ole zijn broertje? Voer een naam van precies 4 letters in:</p>
-        <input type="text" id="naamInput" placeholder="Voer een naam in" maxlength="4"> <!-- Maximaal 4 tekens toegestaan -->
+        <p>Hoe heet Ole zijn broertje? Voer een naam in:</p>
+        <input type="text" id="naamInput" maxlength="5" placeholder="Voer een naam in">
         <button onclick="checkNaam()">Verstuur</button>
         <p id="resultaat"></p>
+        
+        <!-- Lijst van laatst ingevoerde namen -->
+        <h3>Laatst ingevoerde namen:</h3>
+        <ul id="laatsteNamen"></ul>
     </div>
 
-    <script src="script.js"></script> <!-- Link naar de JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
