@@ -7,6 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 .container {
@@ -72,28 +73,39 @@ button:hover {
 /* Vuurwerk Animatie */
 .vuurwerk {
     display: none;
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2em;
-    color: #FFD700;
-    text-align: center;
-    animation: vuurwerkAnimatie 1s ease-in-out infinite;
-    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Voorkom dat het vuurwerk interactie heeft met andere elementen */
+}
+
+.deeltje {
+    position: absolute;
+    background-color: #FFD700;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation: vuurwerkAnimatie 2s ease-in-out infinite;
 }
 
 @keyframes vuurwerkAnimatie {
     0% {
-        opacity: 0;
-        transform: translateX(-50%) scale(0);
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(-50vw, -50vh) scale(1.5);
     }
     50% {
-        opacity: 1;
-        transform: translateX(-50%) scale(1.2);
+        transform: translate(50vw, -50vh) scale(2);
+    }
+    75% {
+        transform: translate(-50vw, 50vh) scale(2.5);
     }
     100% {
         opacity: 0;
-        transform: translateX(-50%) scale(0);
+        transform: translate(0, 0) scale(3);
     }
 }
