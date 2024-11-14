@@ -86,13 +86,13 @@ function startVuurwerk() {
 
     vuurwerkElement.style.display = "block"; // Toon het vuurwerk
 
-    // Herhaal de animatie met willekeurige posities
+    // Herhaal de animatie met willekeurige posities. Onderstaande was 1000 en 5000
     setInterval(() => {
         setRandomPosition(); // Verander de positie elke seconde
-    }, 1000);
+    }, 3000);
 
     // Verberg het vuurwerk na 5 seconden
     setTimeout(() => {
         vuurwerkElement.style.display = "none";
-    }, 5000);
+    }, 15000);
 }
