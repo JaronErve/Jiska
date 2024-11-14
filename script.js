@@ -5,6 +5,7 @@ function checkNaam() {
     const naamInput = document.getElementById("naamInput").value.trim().toLowerCase();
     const resultaatElement = document.getElementById("resultaat");
     const laatsteNamenElement = document.getElementById("laatsteNamen");
+    const vuurwerkElement = document.getElementById("vuurwerk");
 
     if (naamInput.length !== 4) {
         resultaatElement.innerHTML = "<span style='color: red;'>Voer een naam in van precies 4 letters.</span>";
@@ -42,7 +43,12 @@ function checkNaam() {
     });
 
     if (naamInput === correctNaam.toLowerCase()) {
+        // Welkom Loek! met vuurwerk
         resultaatElement.innerHTML = "<span style='color: green;'>Welkom Loek!!!</span>";
+        vuurwerkElement.style.display = "block"; // Toon het vuurwerk
+        setTimeout(() => {
+            vuurwerkElement.style.display = "none"; // Verberg het vuurwerk na 5 seconden
+        }, 5000);
     } else {
         let resultaat = "";
         for (let i = 0; i < naamInput.length; i++) {
