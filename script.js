@@ -7,7 +7,7 @@ function checkNaam() {
 
     // Controleer of de ingevoerde naam precies 4 letters heeft
     if (naamInput.length !== 4) {
-        resultaatElement.innerHTML = "<span style='color: red;'>Voer precies 4 letters in.</span>";
+        resultaatElement.innerHTML = "<span style='color: red;'>Voer exact 4 letters in.</span>";
         return; // Stop de functie als de invoer niet precies 4 letters is
     }
 
@@ -61,4 +61,17 @@ function getKleurInstellingen(naamInput) {
     let kleuren = [];
 
     for (let i = 0; i < naamInput.length; i++) {
-       
+        const letter = naamInput[i];
+        const correctLetter = correctNaam[i];
+
+        if (letter === correctLetter) {
+            kleuren.push("green"); // Correcte letter, groen
+        } else if (correctNaam.includes(letter)) {
+            kleuren.push("orange"); // Letter komt voor, maar niet op de juiste plek, oranje
+        } else {
+            kleuren.push("red"); // Fout, rood
+        }
+    }
+
+    return kleuren;
+}
