@@ -9,8 +9,8 @@
 <body>
     <div class="container">
         <h1>Lingo</h1>
-        <p>Hoe heet Ole zijn broertje? Voer een naam in:</p>
-        <input type="text" id="naamInput" placeholder="Voer een naam in">
+        <p>Hoe heet Ole zijn broertje? Voer een naam van precies 4 letters in:</p>
+        <input type="text" id="naamInput" placeholder="Voer een naam in" maxlength="4"> <!-- Maximaal 4 tekens toegestaan -->
         <button onclick="checkNaam()">Verstuur</button>
         <p id="resultaat"></p>
     </div>
