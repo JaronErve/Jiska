@@ -46,6 +46,7 @@ function checkNaam() {
         // Welkom Loek! met vuurwerk
         resultaatElement.innerHTML = "<span style='color: green;'>Welkom Loek!!!</span>";
         vuurwerkElement.style.display = "block"; // Toon het vuurwerk
+        vuurwerkElement.style.animation = "vuurwerkAnimatie 1.5s ease-out, beweegVuurwerk 1s ease-out infinite"; // Start de animaties
         setTimeout(() => {
             vuurwerkElement.style.display = "none"; // Verberg het vuurwerk na 5 seconden
         }, 5000);
