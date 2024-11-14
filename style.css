@@ -72,13 +72,15 @@ button:hover {
 /* Vuurwerk Animatie */
 .vuurwerk {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 2em;
     color: #FFD700;
+    text-align: center;
     animation: vuurwerkAnimatie 1s ease-in-out infinite;
+    opacity: 0;
 }
 
 @keyframes vuurwerkAnimatie {
