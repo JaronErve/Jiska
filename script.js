@@ -1,36 +1,43 @@
-let laatstIngevoerdeWoorden = [];
+let laatstIngevoerdeWoorden = []; // Array om de laatst ingevoerde woorden en kleuren bij te houden
 
 function checkNaam() {
     const correctNaam = "Loek";
-    const naamInput = document.getElementById("naamInput").value.toLowerCase(); // Zet ingevoerde naam om naar kleine letters
+    const naamInput = document.getElementById("naamInput").value.trim().toLowerCase(); // Zet naar kleine letters
     const resultaatElement = document.getElementById("resultaat");
 
-    if (naamInput.trim() !== "") {
-        laatstIngevoerdeWoorden.unshift({ woord: naamInput, kleuren: getKleurInstellingen(naamInput) });
-        if (laatstIngevoerdeWoorden.length > 5) {
-            laatstIngevoerdeWoorden.pop();
-        }
+    // Controleer of de ingevoerde naam precies 4 letters heeft
+    if (naamInput.length !== 4) {
+        resultaatElement.innerHTML = "<span style='color: red;'>Voer precies 4 letters in.</span>";
+        return; // Stop de functie als de invoer niet precies 4 letters is
     }
 
-    if (naamInput === correctNaam.toLowerCase()) { // Vergelijk beide namen in kleine letters
+    // Voeg het huidige woord en de kleurinstellingen toe aan de lijst van laatst ingevoerde woorden
+    laatstIngevoerdeWoorden.unshift({ woord: naamInput, kleuren: getKleurInstellingen(naamInput) });
+    if (laatstIngevoerdeWoorden.length > 5) {
+        laatstIngevoerdeWoorden.pop(); // Verwijder het oudste woord als er meer dan 5 woorden zijn
+    }
+
+    // Controleer of het woord juist is en toon de gekleurde letters
+    if (naamInput === correctNaam.toLowerCase()) {
         resultaatElement.innerHTML = "<span style='color: green;'>Welkom Loek!!!</span>";
     } else {
         let resultaat = "";
         for (let i = 0; i < naamInput.length; i++) {
             const letter = naamInput[i];
-            const correctLetter = correctNaam[i].toLowerCase(); // Zet correctLetter om naar kleine letters
+            const correctLetter = correctNaam[i].toLowerCase();
 
             if (letter === correctLetter) {
-                resultaat += `<span style='color: green;'>${naamInput[i]}</span>`;
-            } else if (correctNaam.toLowerCase().includes(letter)) { // Controleer in kleine letters
-                resultaat += `<span style='color: orange;'>${naamInput[i]}</span>`;
+                resultaat += `<span style='color: green;'>${letter}</span>`; // Correcte letter, groen
+            } else if (correctNaam.toLowerCase().includes(letter)) {
+                resultaat += `<span style='color: orange;'>${letter}</span>`; // Letter komt voor, maar niet op de juiste plek, oranje
             } else {
-                resultaat += `<span style='color: red;'>${naamInput[i]}</span>`;
+                resultaat += `<span style='color: red;'>${letter}</span>`; // Fout, rood
             }
         }
         resultaatElement.innerHTML = resultaat;
     }
 
+    // Toon de 5 laatst ingevoerde woorden met hun kleurinstellingen
     const woordenLijst = document.createElement("ul");
     laatstIngevoerdeWoorden.forEach((item) => {
         const li = document.createElement("li");
@@ -40,29 +47,18 @@ function checkNaam() {
             const kleur = item.kleuren[i];
             gekleurdWoord += `<span style="color: ${kleur};">${letter}</span>`;
         }
-        li.innerHTML = gekleurdWoord;
+        li.innerHTML = gekleurdWoord; // Voeg het gekleurde woord toe
         woordenLijst.appendChild(li);
     });
 
+    // Voeg de lijst van laatst ingevoerde woorden toe aan het resultaat
     resultaatElement.appendChild(woordenLijst);
 }
 
+// Functie om de kleurinstellingen voor een woord te krijgen
 function getKleurInstellingen(naamInput) {
-    const correctNaam = "Loek".toLowerCase(); // Zet correctNaam om naar kleine letters
+    const correctNaam = "Loek".toLowerCase(); // Zet het referentiewoord naar kleine letters
     let kleuren = [];
 
     for (let i = 0; i < naamInput.length; i++) {
-        const letter = naamInput[i].toLowerCase(); // Zet letter om naar kleine letters
-        const correctLetter = correctNaam[i];
-
-        if (letter === correctLetter) {
-            kleuren.push("green");
-        } else if (correctNaam.includes(letter)) {
-            kleuren.push("orange");
-        } else {
-            kleuren.push("red");
-        }
-    }
-
-    return kleuren;
-}
+       
