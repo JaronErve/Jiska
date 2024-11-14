@@ -68,3 +68,30 @@ button:hover {
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+
+/* Vuurwerk Animatie */
+.vuurwerk {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    color: #FFD700;
+    animation: vuurwerkAnimatie 1s ease-in-out infinite;
+}
+
+@keyframes vuurwerkAnimatie {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0);
+    }
+}
