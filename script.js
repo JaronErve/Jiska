@@ -45,7 +45,16 @@ function checkNaam() {
     if (naamInput === correctNaam.toLowerCase()) {
         // Welkom Loek! met vuurwerk
         resultaatElement.innerHTML = "<span style='color: green;'>Welkom Loek!!!</span>";
-        startVuurwerk(); // Start het vuurwerk met willekeurige posities
+        vuurwerkElement.style.display = "block"; // Toon het vuurwerk
+        // Laat vuurwerk 5 seconden duren op de eerste locatie
+        setTimeout(() => {
+            // Verplaats het vuurwerk naar een andere locatie en laat het nog 20 seconden duren
+            vuurwerkElement.style.top = "50%";
+            vuurwerkElement.style.left = "50%";
+            setTimeout(() => {
+                vuurwerkElement.style.display = "none"; // Verberg het vuurwerk na 25 seconden
+            }, 20000); // Blijf 20 seconden op de nieuwe locatie
+        }, 5000); // Laat het vuurwerk 5 seconden op de eerste locatie
     } else {
         let resultaat = "";
         for (let i = 0; i < naamInput.length; i++) {
@@ -62,37 +71,4 @@ function checkNaam() {
         }
         resultaatElement.innerHTML = resultaat;
     }
-}
-
-// Functie om vuurwerk willekeurig over het scherm te plaatsen
-function startVuurwerk() {
-    const vuurwerkElement = document.getElementById("vuurwerk");
-
-    // Functie om de positie van het vuurwerk willekeurig te zetten
-    function setRandomPosition() {
-        const maxWidth = window.innerWidth;  // Breedte van het scherm
-        const maxHeight = window.innerHeight;  // Hoogte van het scherm
-        
-        // Willekeurige positie
-        const randomX = Math.floor(Math.random() * maxWidth);
-        const randomY = Math.floor(Math.random() * maxHeight);
-        
-        // Zet de positie van het vuurwerk
-        vuurwerkElement.style.left = randomX + "px";
-        vuurwerkElement.style.top = randomY + "px";
-    }
-
-    setRandomPosition(); // Zet de eerste willekeurige positie
-
-    vuurwerkElement.style.display = "block"; // Toon het vuurwerk
-
-    // Herhaal de animatie met willekeurige posities
-    setInterval(() => {
-        setRandomPosition(); // Verander de positie elke seconde
-    }, 1000);
-
-    // Verberg het vuurwerk na 5 seconden
-    setTimeout(() => {
-        vuurwerkElement.style.display = "none";
-    }, 5000);
 }
