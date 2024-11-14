@@ -72,10 +72,7 @@ button:hover {
 /* Vuurwerk Animatie */
 .vuurwerk {
     display: none;
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute; /* Zorg ervoor dat het vuurwerk overal op het scherm kan komen */
     font-size: 2em;
     color: #FFD700;
     text-align: center;
@@ -86,14 +83,14 @@ button:hover {
 @keyframes vuurwerkAnimatie {
     0% {
         opacity: 0;
-        transform: translateX(-50%) scale(0);
+        transform: scale(0);
     }
     50% {
         opacity: 1;
-        transform: translateX(-50%) scale(1.2);
+        transform: scale(1.2);
     }
     100% {
         opacity: 0;
-        transform: translateX(-50%) scale(0);
+        transform: scale(0);
     }
 }
