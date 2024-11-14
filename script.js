@@ -21,7 +21,23 @@ function checkNaam() {
     laatsteNamenElement.innerHTML = "";
     laatstIngevoerdeWoorden.forEach(woord => {
         const li = document.createElement("li");
-        li.textContent = woord;
+        let gekleurdeWoord = "";
+
+        // Loop door elke letter in de naam om kleur toe te passen
+        for (let i = 0; i < woord.length; i++) {
+            const letter = woord[i];
+            const correctLetter = correctNaam[i].toLowerCase();
+
+            if (letter === correctLetter) {
+                gekleurdeWoord += `<span style='color: green;'>${letter}</span>`;
+            } else if (correctNaam.toLowerCase().includes(letter)) {
+                gekleurdeWoord += `<span style='color: orange;'>${letter}</span>`;
+            } else {
+                gekleurdeWoord += `<span style='color: red;'>${letter}</span>`;
+            }
+        }
+        
+        li.innerHTML = gekleurdeWoord;  // Zet de gekleurde tekst in de lijst
         laatsteNamenElement.appendChild(li);
     });
 
