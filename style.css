@@ -1,4 +1,4 @@
-body {
+=body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     margin: 0;
@@ -42,4 +42,47 @@ button:hover {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
+}
+
+/* Vuurwerk-effect styling */
+#vuurwerkContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 100;
+}
+
+#welkomBericht {
+    font-size: 50px;
+    color: gold;
+    text-shadow: 2px 2px 5px #ff5733;
+    animation: popIn 1s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Vuurwerk effect */
+.firework {
+    width: 10px;
+    height: 10px;
+    background-color: #ff5733;
+    border-radius: 50%;
+    position: absolute;
+    animation: explode 1s ease forwards;
+}
+
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
 }
