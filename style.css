@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Zorg ervoor dat er geen scrollbalk verschijnt */
 }
 
 .container {
@@ -18,6 +18,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
+    position: relative; /* Zorg ervoor dat de container goed wordt gepositioneerd */
 }
 
 h1 {
@@ -74,38 +75,52 @@ button:hover {
 .vuurwerk {
     display: none;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; /* Voorkom dat het vuurwerk interactie heeft met andere elementen */
-}
-
-.deeltje {
-    position: absolute;
-    background-color: #FFD700;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    animation: vuurwerkAnimatie 2s ease-in-out infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    color: #FFD700;
+    text-align: center;
+    animation: vuurwerkAnimatie 1.5s ease-out infinite, beweegVuurwerk 1s ease-out infinite;
+    opacity: 0;
+    z-index: 1000; /* Zorgt ervoor dat het vuurwerk boven andere elementen komt */
 }
 
 @keyframes vuurwerkAnimatie {
     0% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1);
-    }
-    25% {
-        transform: translate(-50vw, -50vh) scale(1.5);
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
     }
     50% {
-        transform: translate(50vw, -50vh) scale(2);
-    }
-    75% {
-        transform: translate(-50vw, 50vh) scale(2.5);
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
     }
     100% {
         opacity: 0;
-        transform: translate(0, 0) scale(3);
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+/* Beweeg de vuurwerkdiv over het scherm */
+@keyframes beweegVuurwerk {
+    0% {
+        top: 50%;
+        left: 50%;
+    }
+    25% {
+        top: 20%;
+        left: 30%;
+    }
+    50% {
+        top: 10%;
+        left: 70%;
+    }
+    75% {
+        top: 80%;
+        left: 90%;
+    }
+    100% {
+        top: 50%;
+        left: 50%;
     }
 }
