@@ -1,5 +1,3 @@
-let laatstIngevoerdeWoorden = [];
-
 function checkNaam() {
     const correctNaam = "Loek";
     const naamInput = document.getElementById("naamInput").value.trim().toLowerCase();
