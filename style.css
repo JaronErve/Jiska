@@ -1,52 +1,96 @@
-/* Basisstijl voor de pagina */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
     text-align: center;
-    padding: 50px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#resultaat {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#laatsteNamen {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+    font-size: 16px;
+}
+
+#laatsteNamen li {
+    background-color: #f9f9f9;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Vuurwerk Animatie */
 .vuurwerk {
     display: none;
-    position: fixed;
+    position: absolute; /* Zorg ervoor dat het vuurwerk overal op het scherm kan komen */
     font-size: 2em;
     color: #FFD700;
     text-align: center;
+    animation: vuurwerkAnimatie 1s ease-in-out infinite;
     opacity: 0;
-    animation: vuurwerkAnimatie 25s ease-in-out infinite;
-    pointer-events: none; /* Zorg ervoor dat het vuurwerk geen andere elementen blokkeert */
 }
 
 @keyframes vuurwerkAnimatie {
     0% {
         opacity: 0;
-        transform: translateX(-50%) translateY(0) scale(0);
-    }
-    20% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0) scale(1.2);
-    }
-    25% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(0) scale(0);
+        transform: scale(0);
     }
     50% {
         opacity: 1;
-        transform: translateX(50%) translateY(-50%) scale(1.2);
+        transform: scale(1.2);
     }
     100% {
         opacity: 0;
-        transform: translateX(50%) translateY(50%) scale(0);
+        transform: scale(0);
     }
-}
-
-/* Extra styling voor de lijst van laatst ingevoerde namen */
-#laatsteNamen {
-    list-style-type: none;
-    padding: 0;
-}
-
-#laatsteNamen li {
-    font-size: 18px;
-    margin: 5px 0;
 }
